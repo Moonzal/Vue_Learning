@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Third Vue</title>
+    <style>
+        .box {
+            background-color: purple;
+            height: 200px;
+            width: 200px;
+        }
+
+        .box.dua {
+            background-color: brown;
+        }
+
+        .box.tiga {
+            background-color: yellow;
+        }
+
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        {{greeting}}
+        <input @keyup.enter="greet(greeting)" v-model="greeting" type="text">
+        <hr>
+        <!-- <button v-on:click="isVisible = !isVisible">Buka Box</button> -->
+        <button @click="toggleBox">Buka Box</button>
+        <div v-if="isVisible" class="box"></div>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        let app = Vue.createApp({
+            data: function () {
+                return {
+                    greeting: 'Hello Vue 3!',
+                    isVisible: false
+                }
+            },
+            methods: {
+                toggleBox: function () {
+                    this.isVisible = !this.isVisible
+                },
+                greet(param) {
+                    console.log(param)
+                }
+            }
+        });
+        app.mount('#app')
+    </script>
+</body>
+
+</html>
